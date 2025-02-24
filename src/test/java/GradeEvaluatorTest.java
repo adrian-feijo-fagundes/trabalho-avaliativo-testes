@@ -36,4 +36,16 @@ public class GradeEvaluatorTest {
         assertEquals("Reprovado", GradeEvaluator.eval(new Student("Marcos", 29)));
         assertEquals("Reprovado", GradeEvaluator.eval(new Student("Natan", 15)));
     }
+
+    @Test
+    public void shouldThrowExceptionForGradesAbove100() {
+        Exception exception = assertThrows(RuntimeException.class, () -> GradeEvaluator.eval(new Student("Oseias", 101)));
+        assertEquals("Número maior que o permitido", exception.getMessage());
+    }
+
+    @Test
+    public void shouldThrowExceptionForGradesBelow0() {
+        Exception exception = assertThrows(RuntimeException.class, () -> GradeEvaluator.eval(new Student("Pedro", -1)));
+        assertEquals("Número menor que o permitido", exception.getMessage());
+    }
 }
