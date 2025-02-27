@@ -5,6 +5,7 @@ public class GradeEvaluator {
 
         int grade = student.getGrade();
 
+        // Caso o valor informado seja inválido lança uma Exception
         if (grade > 100) throw new RuntimeException("Número maior que o permitido");
         if (grade < 0) throw new RuntimeException("Número menor que o permitido");
 
